@@ -49,3 +49,48 @@ function calcularEnvio(importe) {
 }
 console.log(`El costo de envio es: ${calcularEnvio(49.40).toFixed(2)}`);
 console.log(`El costo de envio es: ${calcularEnvio(71.25).toFixed(2)}`);
+
+/* Ejercicio-3 */
+/* Variables */
+const productos = ["Teclado", "Ratón", "Monitor", "Auriculares", "Webcam"];
+const precios = [45.99, 19.90, 189.00, 59.95, 34.50];
+const stock = [10, 25, 3, 0, 7];
+
+// Contar productos agotados (patron contador)
+function contarAgotados(stock) {
+    let agotados = 0;
+    for (let i = 0; i < stock.length; i++) {
+        if (stock[i] === 0) {
+            agotados++;
+        }
+    }
+    return agotados;
+}
+console.log(`Los productos agotados son: ${contarAgotados(stock)}`);
+console.log(`Los productos agotados son: ${contarAgotados([20, 30, 58, 96, 0, 0])}`);
+
+// Producto mas caro (patron maximo: guardamos la posicion)
+function productoMasCaro(productos, precios) {
+    let posicionMasCaro = 0;
+    for (let i = 1; i < precios.length; i++) {
+        if (precios[i] > precios[posicionMasCaro]) {
+            posicionMasCaro = i;
+        }
+    }
+    return productos[posicionMasCaro];
+}
+
+console.log(`El producto más caro es: ${productoMasCaro(productos, precios)}`);
+console.log(`El producto más caro es: ${productoMasCaro(["camisa", "pantalon", "sombrero"], [20, 15, 12.90])}`);
+
+// Valor total del inventario (patron acumulador)
+function valorInventario(precios, stock) {
+    let valorTotal = 0;
+    for (let i = 0; i < precios.length; i++) {
+        valorTotal += precios[i] * stock[i];
+    }
+    return valorTotal;
+}
+
+console.log(`El valor del inventario es (suma de precio x stock): ${valorInventario(precios, stock).toFixed(2)} €`);
+console.log(`El valor del inventario es (suma de precio x stock): ${valorInventario([10.1, 19.90, 21.20], [2, 5, 8]).toFixed(2)} €`);
