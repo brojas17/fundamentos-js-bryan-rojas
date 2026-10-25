@@ -103,12 +103,6 @@ for (let i = 0; i < pedidoProductos.length; i++) {
     }
 }
 
-// Comprobación provisional posterior para verificar el resultado
-console.log("ticketProductos: ", ticketProductos);
-console.log("ticketCantidades: ", ticketCantidades);
-console.log("ticketPrecios:    ", ticketPrecios);
-console.log("stock:            ", stock);
-
 // === TICKET ===
 console.log("=== TICKET ===");
 
@@ -164,3 +158,31 @@ if (envio === 0) {
 }
 
 console.log(`TOTAL: ${total.toFixed(2)} €`);
+
+
+// === STOCK ACTUALIZADO ===
+console.log("=== STOCK ACTUALIZADO ===");
+
+let textoStock = "";
+const agotados = [];
+
+for (let i = 0; i < productos.length; i++) {
+    // Acumulador de texto para el stock de cada producto en una sola línea
+    textoStock += `${productos[i]}: ${stock[i]}`;
+
+    // Añadir el separador " · " solo si no es el último producto
+    if (i < productos.length - 1) {
+        textoStock += " · ";
+    }
+
+    // Guardar en el array los productos cuyo stock sea 0
+    if (stock[i] === 0) {
+        agotados.push(productos[i]);
+    }
+}
+
+// Mostramos la línea acumulada de stock
+console.log(textoStock);
+
+// Mostramos los productos agotados unidos por comas
+console.log(`Agotados: ${agotados.join(", ")}`);
