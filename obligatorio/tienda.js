@@ -130,5 +130,37 @@ for (let i = 0; i < ticketProductos.length; i++) {
     console.log(`${cantidad} x ${nombre} (${precio.toFixed(2)} €) = ${importeLinea.toFixed(2)} €`);
 }
 
-// Mostramos el subtotal acumulado
+// Calcular descuento sobre el subtotal usando la función existente
+const descuento = calcularDescuento(subtotal);
+
+// Base imponible (subtotal - descuento)
+const baseImponible = subtotal - descuento;
+
+// IVA calculado sobre la base imponible usando la función existente
+const iva = calcularIVA(baseImponible);
+
+// Gastos de envío calculados sobre la base imponible usando la función existente
+const envio = calcularEnvio(baseImponible); // (mantén tu calcularEnvio(baseImponible))
+
+// Total final (base imponible + IVA + envío)
+const total = baseImponible + iva + envio;
+
+// Mostrar resultados con los formatos requeridos
 console.log(`Subtotal: ${subtotal.toFixed(2)} €`);
+
+if (descuento > 0) {
+    console.log(`Descuento: -${descuento.toFixed(2)} €`);
+} else {
+    console.log(`Descuento: 0.00 €`);
+}
+
+console.log(`Base imponible: ${baseImponible.toFixed(2)} €`);
+console.log(`IVA (${porcentajeIva}%): ${iva.toFixed(2)} €`);
+
+if (envio === 0) {
+    console.log(`Envío: Gratis`);
+} else {
+    console.log(`Envío: ${envio.toFixed(2)} €`);
+}
+
+console.log(`TOTAL: ${total.toFixed(2)} €`);
