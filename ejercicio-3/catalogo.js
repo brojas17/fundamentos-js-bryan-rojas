@@ -27,3 +27,12 @@ for (let i = 0; i < stock.length; i++) {
 
 console.log("");
 console.log(`Productos agotados: ${agotados}`);
+
+// 3. Producto mas caro (patron maximo: guardamos la posicion)
+let posicionMasCaro = 0;
+for (let i = 1; i < precios.length; i++) {
+    if (precios[i] > precios[posicionMasCaro]) {
+        posicionMasCaro = i;
+    }
+}
+console.log(`Producto mas caro: ${productos[posicionMasCaro]} (${precios[posicionMasCaro].toFixed(2)} €)`);
