@@ -65,24 +65,24 @@ for (let i = 0; i < productos.length; i++) {
 
 console.log("=== PROCESANDO PEDIDO ===");
 
+// 1. Nuevos arrays para almacenar los datos del ticket (se declaran ANTES del bucle)
+const ticketProductos = [];
+const ticketCantidades = [];
+const ticketPrecios = [];
+
 for (let i = 0; i < pedidoProductos.length; i++) {
-    // Guardar en variables el nombre y la cantidad de la línea actual
     const nombre = pedidoProductos[i];
     const cantidad = pedidoCantidades[i];
-
-    // Buscar la posición del producto en el catálogo
     const posicion = buscarProducto(productos, nombre);
 
-    // Validar si existe o no según la posición devuelta
     if (posicion === -1) {
         console.log(`AVISO: ${nombre} no existe en el catálogo.`);
     } else {
-        // Unidades que se sirven de esta línea
         let unidadesServidas = 0;
 
-        // Primero se comprueba si está agotado
         if (stock[posicion] === 0) {
             console.log(`AVISO: ${nombre} está agotado`);
+            unidadesServidas = 0;
         } else if (cantidad > stock[posicion]) {
             unidadesServidas = stock[posicion];
             console.log(`AVISO: solo hay ${unidadesServidas} uds de ${nombre}, se sirven ${unidadesServidas}`);
@@ -90,5 +90,21 @@ for (let i = 0; i < pedidoProductos.length; i++) {
             unidadesServidas = cantidad;
             console.log(`OK: ${unidadesServidas} x ${nombre}`);
         }
+
+        // Guardar la línea en el ticket SÓLO si se ha servido alguna unidad (> 0)
+        if (unidadesServidas > 0) {
+            ticketProductos.push(nombre);
+            ticketCantidades.push(unidadesServidas);
+            ticketPrecios.push(precios[posicion]); // ¡Usamos precios[posicion] del catálogo!
+
+            // Restar las unidades del stock del catálogo
+            stock[posicion] -= unidadesServidas;
+        }
     }
 }
+
+// Comprobación provisional posterior para verificar el resultado
+console.log("ticketProductos: ", ticketProductos);
+console.log("ticketCantidades: ", ticketCantidades);
+console.log("ticketPrecios:    ", ticketPrecios);
+console.log("stock:            ", stock);
