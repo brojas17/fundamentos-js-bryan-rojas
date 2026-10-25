@@ -7,10 +7,15 @@ const precios = [45.99, 19.90, 189.00, 59.95, 34.50];
 const stock = [10, 25, 3, 0, 7];
 let buscado = "asds";
 
-let indexProducto = -1;
+let posicion = -1;
 for (let i = 0; i < productos.length; i++) {
     if (productos[i] === buscado) {
-        indexProducto = i;
+        posicion = i;
     }
 }
-console.log(indexProducto);
+
+if (posicion === -1) {
+    console.log(`Posición: ${posicion}. ${buscado} no existe en el catálogo.`)
+} else {
+    console.log(`${buscado} está en la posición ${posicion}. Precio: ${precios[posicion].toFixed(2)}€. Stock: ${stock[posicion]}`);
+}
