@@ -77,6 +77,18 @@ for (let i = 0; i < pedidoProductos.length; i++) {
     if (posicion === -1) {
         console.log(`AVISO: ${nombre} no existe en el catálogo.`);
     } else {
-        console.log(`Encontrado: ${nombre} en la posición ${posicion}`);
+        // Unidades que se sirven de esta línea
+        let unidadesServidas = 0;
+
+        // Primero se comprueba si está agotado
+        if (stock[posicion] === 0) {
+            console.log(`AVISO: ${nombre} está agotado`);
+        } else if (cantidad > stock[posicion]) {
+            unidadesServidas = stock[posicion];
+            console.log(`AVISO: solo hay ${unidadesServidas} uds de ${nombre}, se sirven ${unidadesServidas}`);
+        } else {
+            unidadesServidas = cantidad;
+            console.log(`OK: ${unidadesServidas} x ${nombre}`);
+        }
     }
 }
