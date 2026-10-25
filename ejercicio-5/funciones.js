@@ -6,6 +6,9 @@ parámetros, return
 /* Variables */
 const porcentajeIva = 21;
 const gastoEnvio = 4.95;
+const productos = ["Teclado", "Ratón", "Monitor", "Auriculares", "Webcam"];
+const precios = [45.99, 19.90, 189.00, 59.95, 34.50];
+const stock = [10, 25, 3, 0, 7];
 /* Ejercicio-1 */
 /* 1. Calcular el subtotal (precio × cantidad) */
 
@@ -13,16 +16,12 @@ function calcularImporteLinea(precio, cantidad) {
     return precio * cantidad;
 }
 
-console.log(`El importe es: ${calcularImporteLinea(189, 2)}`);
-console.log(`El importe es: ${calcularImporteLinea(63, 3)}`);
 
 /* 2. Calcular el IVA sobre el subtotal */
 
 function calcularIVA(importe) {
     return importe * (porcentajeIva / 100);
 }
-console.log(`El iva es: ${calcularIVA(378).toFixed(2)}`);
-console.log(`El iva es: ${calcularIVA(245).toFixed(2)}`);
 
 /* Ejercicio-2 */
 
@@ -36,8 +35,6 @@ function calcularDescuento(importe) {
         return 0;                           // 50 € o menos: sin descuento
     }
 }
-console.log(`El descuento es: ${calcularDescuento(120).toFixed(2)}`);
-console.log(`El descuento es: ${calcularDescuento(75).toFixed(2)}`);
 
 // Recibe el importe YA DESCONTADO.
 function calcularEnvio(importe) {
@@ -47,14 +44,8 @@ function calcularEnvio(importe) {
         return gastoEnvio;
     }
 }
-console.log(`El costo de envio es: ${calcularEnvio(49.40).toFixed(2)}`);
-console.log(`El costo de envio es: ${calcularEnvio(71.25).toFixed(2)}`);
 
 /* Ejercicio-3 */
-/* Variables */
-const productos = ["Teclado", "Ratón", "Monitor", "Auriculares", "Webcam"];
-const precios = [45.99, 19.90, 189.00, 59.95, 34.50];
-const stock = [10, 25, 3, 0, 7];
 
 // Contar productos agotados (patron contador)
 function contarAgotados(stock) {
@@ -66,8 +57,6 @@ function contarAgotados(stock) {
     }
     return agotados;
 }
-console.log(`Los productos agotados son: ${contarAgotados(stock)}`);
-console.log(`Los productos agotados son: ${contarAgotados([20, 30, 58, 96, 0, 0])}`);
 
 // Producto mas caro (patron maximo: guardamos la posicion)
 function productoMasCaro(productos, precios) {
@@ -80,9 +69,6 @@ function productoMasCaro(productos, precios) {
     return productos[posicionMasCaro];
 }
 
-console.log(`El producto más caro es: ${productoMasCaro(productos, precios)}`);
-console.log(`El producto más caro es: ${productoMasCaro(["camisa", "pantalon", "sombrero"], [20, 15, 12.90])}`);
-
 // Valor total del inventario (patron acumulador)
 function valorInventario(precios, stock) {
     let valorTotal = 0;
@@ -92,5 +78,39 @@ function valorInventario(precios, stock) {
     return valorTotal;
 }
 
+/* Ejercicio-4 */
+// Devuelve la posición del producto, o -1 si no existe
+function buscarProducto(productos, nombre) {
+    let posicion = -1;
+    for (let i = 0; i < productos.length; i++) {
+        if (productos[i].toLowerCase() === nombre.toLowerCase()) {
+            posicion = i;
+            break;
+        }
+    }
+    return posicion;
+}
+//--------------------------------------------------
+console.log(`El importe es: ${calcularImporteLinea(189, 2)}`);
+console.log(`El importe es: ${calcularImporteLinea(63, 3)}`);
+//--------------------------------------------------
+console.log(`El iva es: ${calcularIVA(378).toFixed(2)}`);
+console.log(`El iva es: ${calcularIVA(245).toFixed(2)}`);
+//--------------------------------------------------
+console.log(`El descuento es: ${calcularDescuento(120).toFixed(2)}`);
+console.log(`El descuento es: ${calcularDescuento(75).toFixed(2)}`);
+//--------------------------------------------------
+console.log(`El costo de envio es: ${calcularEnvio(49.40).toFixed(2)}`);
+console.log(`El costo de envio es: ${calcularEnvio(71.25).toFixed(2)}`);
+//--------------------------------------------------
+console.log(`Los productos agotados son: ${contarAgotados(stock)}`);
+console.log(`Los productos agotados son: ${contarAgotados([20, 30, 58, 96, 0, 0])}`);
+//--------------------------------------------------
+console.log(`El producto más caro es: ${productoMasCaro(productos, precios)}`);
+console.log(`El producto más caro es: ${productoMasCaro(["camisa", "pantalon", "sombrero"], [20, 15, 12.90])}`);
+//--------------------------------------------------
 console.log(`El valor del inventario es (suma de precio x stock): ${valorInventario(precios, stock).toFixed(2)} €`);
 console.log(`El valor del inventario es (suma de precio x stock): ${valorInventario([10.1, 19.90, 21.20], [2, 5, 8]).toFixed(2)} €`);
+//--------------------------------------------------
+console.log(`La posicion del producto es: ${buscarProducto(productos, "Monitor")}`);
+console.log(`La posicion del producto es: ${buscarProducto(productos, "Altavoz")}`);
