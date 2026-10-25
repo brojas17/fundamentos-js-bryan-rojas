@@ -1,3 +1,4 @@
+// Catálogo
 // Constantes de la tienda
 const porcentajeIva = 21;
 const gastoEnvio = 4.95;
@@ -48,4 +49,16 @@ function calcularEnvio(importe) {
     } else {
         return gastoEnvio;
     }
+}
+
+// Mostrar el catálogo
+for (let i = 0; i < productos.length; i++) {
+    let unidades;
+    if (stock[i] === 0) {
+        unidades = "AGOTADO";
+    } else {
+        unidades = stock[i] + " uds";
+    }
+    console.log("=== CATÁLOGO ===")
+    console.log(`${productos[i]} - ${precios[i].toFixed(2)} € (${unidades})`);
 }
