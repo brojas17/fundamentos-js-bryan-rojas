@@ -9,3 +9,8 @@
 | 25/10 | Ej. 2 | Claude | Le enseñé mi código del envío para que lo revisara | Me pidió que lo probara con 52 € y me recordó que el envío depende del importe con descuento | Creé la variable importeConDescuento y la usé en el if |
 | 25/10 | Ej. 2 | Claude | Le pregunté por qué no salía el € con envio && " €" | Me explicó que && no une textos, sino que devuelve el segundo valor | Uní el número y el € con + |
 | 25/10 | Ej. 2 | Claude | Le enseñé el total y el formato para que los revisara | Me dio una tabla con los resultados de los casos límite (50, 50.01, 100 y 100.01) para comprobar | Probé los 8 importes y comparé los resultados |
+| 25/10 | Ej. 3 | Claude | "Vamos con el ejercicio 3" | Me explicó la idea de los arrays paralelos, me propuso 4 commits y me recordó la estructura del bucle for | Escribí el bucle del catálogo con productos.length y un if para el AGOTADO |
+| 25/10 | Ej. 3 | Claude | Le enseñé mi código del catálogo para que lo revisara | Me avisó de que había escrito "Raton" sin tilde y de que eso daría problemas al buscar productos | Corregí el nombre a "Ratón", como en el enunciado |
+| 25/10 | Ej. 3 | Claude | Le enseñé mi contador de agotados para que lo revisara | Me confirmó que estaba bien y que el bucle aparte me serviría para la función del ejercicio 5 | Hice el commit sin cambios |
+| 25/10 | Ej. 3 | Claude | Le pregunté cómo encontrar el producto más caro | Me hizo preguntas sobre qué guardar (la posición) y con qué valor empezar el máximo | Guardé la posición, empecé el máximo en la posición 0 y el bucle en i = 1 |
+| 25/10 | Ej. 3 | Claude | Le enseñé mi acumulador del inventario para que lo revisara | Me confirmó que estaba bien y que no hacía falta un if para el stock 0 | Hice el commit sin cambios |
