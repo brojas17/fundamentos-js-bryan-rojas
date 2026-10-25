@@ -62,3 +62,21 @@ for (let i = 0; i < productos.length; i++) {
     console.log("=== CATÁLOGO ===")
     console.log(`${productos[i]} - ${precios[i].toFixed(2)} € (${unidades})`);
 }
+
+console.log("=== PROCESANDO PEDIDO ===");
+
+for (let i = 0; i < pedidoProductos.length; i++) {
+    // Guardar en variables el nombre y la cantidad de la línea actual
+    const nombre = pedidoProductos[i];
+    const cantidad = pedidoCantidades[i];
+
+    // Buscar la posición del producto en el catálogo
+    const posicion = buscarProducto(productos, nombre);
+
+    // Validar si existe o no según la posición devuelta
+    if (posicion === -1) {
+        console.log(`AVISO: ${nombre} no existe en el catálogo.`);
+    } else {
+        console.log(`Encontrado: ${nombre} en la posición ${posicion}`);
+    }
+}
