@@ -36,3 +36,11 @@ for (let i = 1; i < precios.length; i++) {
     }
 }
 console.log(`Producto mas caro: ${productos[posicionMasCaro]} (${precios[posicionMasCaro].toFixed(2)} €)`);
+
+// 4. Valor total del inventario (patron acumulador)
+let valorTotal = 0;
+for (let i = 0; i < productos.length; i++) {
+    valorTotal += precios[i] * stock[i];
+}
+
+console.log(`Valor del inventario: ${valorTotal.toFixed(2)} €`);
