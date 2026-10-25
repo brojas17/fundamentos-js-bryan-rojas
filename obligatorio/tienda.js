@@ -108,3 +108,27 @@ console.log("ticketProductos: ", ticketProductos);
 console.log("ticketCantidades: ", ticketCantidades);
 console.log("ticketPrecios:    ", ticketPrecios);
 console.log("stock:            ", stock);
+
+// === TICKET ===
+console.log("=== TICKET ===");
+
+let subtotal = 0;
+
+// Usamos la longitud de los arrays del ticket
+for (let i = 0; i < ticketProductos.length; i++) {
+    const cantidad = ticketCantidades[i];
+    const nombre = ticketProductos[i];
+    const precio = ticketPrecios[i];
+
+    // Calculamos el importe de la línea usando la función existente
+    const importeLinea = calcularImporteLinea(precio, cantidad);
+
+    // Acumulamos el subtotal sumando los importes de cada línea
+    subtotal += importeLinea;
+
+    // Mostramos la línea formateada
+    console.log(`${cantidad} x ${nombre} (${precio.toFixed(2)} €) = ${importeLinea.toFixed(2)} €`);
+}
+
+// Mostramos el subtotal acumulado
+console.log(`Subtotal: ${subtotal.toFixed(2)} €`);
