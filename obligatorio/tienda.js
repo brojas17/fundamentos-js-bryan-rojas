@@ -52,6 +52,7 @@ function calcularEnvio(importe) {
 }
 
 // Mostrar el catálogo
+console.log("=== CATÁLOGO ===")
 for (let i = 0; i < productos.length; i++) {
     let unidades;
     if (stock[i] === 0) {
@@ -59,7 +60,7 @@ for (let i = 0; i < productos.length; i++) {
     } else {
         unidades = stock[i] + " uds";
     }
-    console.log("=== CATÁLOGO ===")
+    //console.log("=== CATÁLOGO ===")
     console.log(`${productos[i]} - ${precios[i].toFixed(2)} € (${unidades})`);
 }
 
